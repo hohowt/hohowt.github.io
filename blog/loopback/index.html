@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>回环录制系统音频 | Waker的个人空间</title>
+  <meta name="title" content="回环录制系统音频">
+<meta name="description" content="Waker&#x27;s space by zola and bear">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+  
+  <link rel="alternate" type="application/atom+xml" title="Waker的个人空间" href="/atom.xml">
+  <style>
+    :root {
+    --width: 800px;
+    --font-main: Verdana, sans-serif;
+    --font-secondary: Verdana, sans-serif;
+    --font-scale: 1em;
+    --background-color: #fff;
+    --heading-color: #222;
+    --text-color: #444;
+    --link-color: #3273dc;
+    --visited-color: #8b6fcb;
+    --code-background-color: #f2f2f2;
+    --code-color: #222;
+    --blockquote-color: #222;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background-color: #01242e;
+      --heading-color: #eee;
+      --text-color: #ddd;
+      --link-color: #8cc2dd;
+      --visited-color: #8b6fcb;
+      --code-background-color: #000;
+      --code-color: #ddd;
+      --blockquote-color: #ccc;
+    }
+  }
+
+  body {
+    font-family: var(--font-secondary);
+    font-size: var(--font-scale);
+    margin: auto;
+    padding: 20px;
+    max-width: var(--width);
+    text-align: left;
+    background-color: var(--background-color);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: var(--text-color);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-main);
+    color: var(--heading-color);
+  }
+
+  a {
+    color: var(--link-color);
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  nav a {
+    margin-right: 8px;
+  }
+
+  nav span.active {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  strong,
+  b {
+    color: var(--heading-color);
+  }
+
+  button {
+    margin: 0;
+    cursor: pointer;
+  }
+
+  main {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px dashed;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  pre code {
+    background-color: var(--code-background-color);
+    color: var(--code-color);
+    display: block;
+    padding: 20px;
+    white-space: pre-wrap;
+    font-size: 0.875rem;
+    overflow-x: auto;
+  }
+
+  code {
+    font-family: monospace;
+    padding: 2px;
+    background-color: var(--code-background-color);
+    color: var(--code-color);
+    border-radius: 3px;
+  }
+
+  blockquote {
+    border-left: 1px solid #999;
+    color: var(--code-color);
+    padding-left: 20px;
+    font-style: italic;
+  }
+
+  footer {
+    padding: 25px 0;
+    text-align: center;
+  }
+
+  .title:hover {
+    text-decoration: none;
+  }
+
+  .title h1 {
+    font-size: 1.5em;
+  }
+
+  .inline {
+    width: auto !important;
+  }
+
+  .highlight,
+  .code {
+    padding: 1px 15px;
+    background-color: var(--code-background-color);
+    color: var(--code-color);
+    border-radius: 3px;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    overflow-x: auto;
+  }
+
+  /* blog post list */
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 160px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: var(--visited-color);
+  }
+
+  .tags {
+    font-size: smaller;
+  }
+
+  </style>
+</head>
+<body>
+  <header>
+  <a href="/" class="title">
+    <h1>Waker的个人空间</h1>
+  </a>
+  <nav aria-label="站点">
+      <a href="/">主页</a>
+      <a href="/blog/">博客</a>
+      <a href="/zola/">感谢</a>
+      <a href="/contact/">联系</a>
+  </nav>
+</header>
+<h1>回环录制系统音频</h1>
+      <p>
+        <i>
+          <time datetime="2025-09-22T00:00:00+00:00" pubdate>2025-09-22</time>
+        </i>
+      </p>
+    <details open>
+      <summary>目录</summary>
+    <ul>
+        <li>
+          <a href="/blog/loopback/#kai-shi">开始</a>
+        </li>
+        <li>
+          <a href="/blog/loopback/#shi-xian">实现</a>
+        </li>
+        <li>
+          <a href="/blog/loopback/#reng-xu-jie-jue">仍需解决</a>
+        </li>
+    </ul>
+    </details>
+  <main>
+    <h2 id="kai-shi">开始</h2>
+<p>我想做个播客系统，那就要录制麦克风和系统声音。
+起初我认为非常简单，毕竟obs能做到，我基于obs基于的ffmpeg也能做到。</p>
+<span id="continue-reading"></span>
+<p><strong>然而</strong>现实狠狠地给了我一嘴巴</p>
+<ol>
+<li>麦克风是很容易获取，但系统音频并不容易。Windows使用dshow可以实现，但Mac就需要新的驱动BlackHole了。跨平台问题需要解决。</li>
+<li>现成的库都是执行ffmpeg的命令，我总不能写入文件再读文件吧，那样延迟太大了。而且还要在包中再打包一个ffmpeg执行文件，太笨重。</li>
+</ol>
+<p>这时我发现了<a href="https://github.com/RustAudio/cpal">cpal</a>，一个rust的跨平台音频库。它对接了windows的WASAPI、Mac的CoreAudio、Linux的ALSA，甚至移动端都有对接。虽然我用不到那么多平台，但这也太棒了。</p>
+<h2 id="shi-xian">实现</h2>
+<p><code>首先要获取设备</code></p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#b48ead;">let</span><span> host = cpal::default_host();
+</span><span style="color:#65737e;">// 两种方案
+</span><span style="color:#65737e;">// 直接获取默认的输出音频设备
+</span><span style="color:#b48ead;">let mut</span><span> out_device = host
+</span><span>        .</span><span style="color:#96b5b4;">default_output_device</span><span>()
+</span><span>        .</span><span style="color:#96b5b4;">ok_or_else</span><span>(|| anyhow::anyhow!(&quot;</span><span style="color:#a3be8c;">no output device available</span><span>&quot;))?;
+</span><span style="color:#65737e;">// 或者获取所有输出音频设备再遍历名称选择想要的设备
+</span><span style="color:#b48ead;">let</span><span> output_devices = host.</span><span style="color:#96b5b4;">output_devices</span><span>().</span><span style="color:#96b5b4;">expect</span><span>(&quot;</span><span style="color:#a3be8c;">list output device error</span><span>&quot;);
+</span></code></pre>
+<p><code>再获取设备配置</code></p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#65737e;">// 这里需要mac安装blackhole，windows不需要其他安装
+</span><span style="color:#b48ead;">let</span><span> config = </span><span style="color:#b48ead;">if</span><span> out_device.</span><span style="color:#96b5b4;">supports_input</span><span>() {
+</span><span>    out_device.</span><span style="color:#96b5b4;">default_input_config</span><span>()
+</span><span>} </span><span style="color:#b48ead;">else </span><span>{
+</span><span>    out_device.</span><span style="color:#96b5b4;">default_output_config</span><span>()
+</span><span>}
+</span><span style="color:#65737e;">// 如果需要对采样率，采样精度做修改就重新生成一份config
+</span><span style="color:#b48ead;">let</span><span> config = cpal::SupportedStreamConfig::new(
+</span><span>        </span><span style="color:#d08770;">1</span><span>,
+</span><span>        cpal::SampleRate(</span><span style="color:#d08770;">16000</span><span>),
+</span><span>        *config.</span><span style="color:#96b5b4;">buffer_size</span><span>(),
+</span><span>        cpal::SampleFormat::</span><span style="color:#d08770;">I16</span><span>,
+</span><span>    );
+</span></code></pre>
+<p><code>开始录制</code></p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#65737e;">// 因为我直接设置了采样精度是i16，如果直接使用默认就需要对多个精度match
+</span><span style="color:#65737e;">// record是把pcm存入本地，如果希望使用其他格式，需要自行找库
+</span><span style="color:#b48ead;">let</span><span> sys_stream = </span><span style="color:#b48ead;">match</span><span> config.</span><span style="color:#96b5b4;">sample_format</span><span>() {
+</span><span>        cpal::SampleFormat::</span><span style="color:#d08770;">I16 </span><span>=&gt; out_device.</span><span style="color:#96b5b4;">build_input_stream</span><span>(
+</span><span>            &amp;config.</span><span style="color:#96b5b4;">into</span><span>(),
+</span><span>            </span><span style="color:#b48ead;">move </span><span>|data, _: &amp;_| record_audio::&lt;</span><span style="color:#b48ead;">i16</span><span>, </span><span style="color:#b48ead;">i16</span><span>&gt;(data),
+</span><span>            err_fn,
+</span><span>            None,
+</span><span>        )?,
+</span><span>        sample_format =&gt; {
+</span><span>            println!(&quot;</span><span style="color:#a3be8c;">匹配的采样格式:</span><span style="color:#d08770;">{}</span><span>&quot;, sample_format);
+</span><span>            </span><span style="color:#b48ead;">return </span><span>Err(
+</span><span>                anyhow::Error::msg(format!(&quot;</span><span style="color:#a3be8c;">Unsupported sample format &#39;</span><span style="color:#d08770;">{sample_format}</span><span style="color:#a3be8c;">&#39;</span><span>&quot;)).</span><span style="color:#96b5b4;">into</span><span>(),
+</span><span>            );
+</span><span>        }
+</span><span>    };
+</span><span>    sys_stream.</span><span style="color:#96b5b4;">play</span><span>()?;
+</span></code></pre>
+<p>好了，成功录制！</p>
+<h2 id="reng-xu-jie-jue">仍需解决</h2>
+<ul>
+<li>跨平台问题还是没有完全搞定，mac端仍需客户手动安装BlackHole，CoreAudio应该是提供了Loopback的能力，还需要调研下</li>
+<li>pcm直接存入文件体积膨胀速度太大，需要使用其他格式进行压缩</li>
+<li>音量阈值能力还未提供，音频短时音量计算方式需要了解，采样时间需要设置</li>
+</ul>
+
+  </main>
+  <p>
+        Tags:
+          <a href="/tags/yin-pin/">#音频</a>
+          <a href="/tags/rust/">#Rust</a>
+  </p>
+<footer>
+  <!--
+    Made with <a href="https://codeberg.org/alanpearce/zola-bearblog">Zola ʕ•ᴥ•ʔ Bear</a> -->
+</footer>
+</body>
+</html>
+
